@@ -354,3 +354,7 @@ MigrationBackup/
 
 # Test File
 teste.py
+
+#Fasta Files
+*.fq
+*.fastq
