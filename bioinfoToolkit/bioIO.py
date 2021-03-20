@@ -26,6 +26,8 @@ class FastQ:
         return self.fastqSeq
     def id(self): #return the id from fastq file in a list (usage: x.id())
         return self.fastqID
+    def qualities(self):
+        return self.fastqQuality
     def write(self, outputName): #write a fastq file (usage: x.write("output.fasta"))
         w = open(outputName, 'w')
         for i in range(len(self.fastqID)):
