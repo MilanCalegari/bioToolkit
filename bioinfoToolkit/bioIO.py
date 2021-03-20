@@ -27,7 +27,9 @@ class FastQ:
     def id(self): #return the id from fastq file in a list (usage: x.id())
         return self.fastqID
     def write(self, outputName): #write a fastq file (usage: x.write("output.fasta"))
-        return self.fastqQuality
+        w = open(outputName, 'w')
+        for i in range(len(self.fastqID)):
+            w.write(f"@{self.fastqID[i]}\n{self.fastqSeq[i]}\n+\n{self.fastqQuality[i]}")
 
 class BioReader:
     def __init__(self, file):
@@ -49,7 +51,7 @@ class BioReader:
 
         return opened_fasta
 
-    def readFastQ(self):
+    def readFastq(self):
         fastq_file = open(self.file, 'r')
         fastq_file_line = fastq_file.readlines()
         fastq_file.close()

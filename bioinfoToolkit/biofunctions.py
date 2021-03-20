@@ -30,13 +30,12 @@ def translastion(dna):
       'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
       'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
       'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W'}
-    for i in range(0,len(dna),3):
+  for i in range(0, len(dna),3):
     if len(dna[i:i+3]) == 3:
       codon = codon_table[dna[i:i+3]]
-      if codon == '_':
+      if codon == '_': #stop codon
         break
       protein += codon
-
   return protein
 
 def reverseComplement(dna):
@@ -54,7 +53,24 @@ def RandomDNA(length):
     return seq
 
 def consensus(dna_list):
-    pass
+    for i in dna_list[1:]:
+        if len(i) != len(dna_list[0]):
+            raise ValueError('Sequences have not the same length')
+    '''
+    dna_list = [ATCGATTAG,
+                GTCGATTAG,
+                ACCGATTAG]
+	'''
+    consensu = []
+
+    for i in range(len(dna_list[0])):
+        position = []
+        for j in range(len(dna_list)):
+            position.append(dna_list[j][i])
+        c_position = Counter(position)
+        consensu.append(max(c_position.items(), key=lambda x:x[1])[0])
+    
+    return ''.join(consensu)
 
 def profile(dna_list):
     pass
