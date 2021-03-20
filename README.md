@@ -15,14 +15,14 @@ bioToolkit is a Python library to deal with biological data
 
       fasta_file = bioreader("file.fasta").readFasta() 
       fasta_id = fasta_file.id() #Create a list with the description lines contained in the fasta file.
-      fasta_seq = fasta_file.seq() #Create a list with the sequences contained in the fasta file.
+      fasta_seq = fasta_file.sequences() #Create a list with the sequences contained in the fasta file.
 
       #Creating and writing your own fasta
 
       my_sequences = ['ATCG','CGAT']
       my_id = ['exemple_1', 'exemple_2']
 
-      my_fasta = fasta(my_sequences, my_id)
+      my_fasta = fasta(my_id, my_sequences)
       my_fasta.write("output.fasta")
       ```
 
@@ -30,6 +30,14 @@ bioToolkit is a Python library to deal with biological data
 
        ```python
        from bioinfoToolkit.bioIO import *
+       
+       #Reading a fastq file
+       
+       fastq_file = bioReader("file.fastq").readFastq()
+       fastq_id = fastq_file.id()
+       fastq_seq = fastq_file.sequences()
+       fastq_quality = fastq_file.qualities()
+       
        ```
 2. biofunctions
     1. couting
